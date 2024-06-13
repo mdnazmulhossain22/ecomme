@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import *
+from django.http import Http404
+
 # Create your views here.
 def home(request):
 
@@ -40,6 +42,19 @@ def contact(request):
     }
 
     return render(request, 'management/contacts.html',context)
+ 
+def detail(request, id):
+    contact = None
+    try:
+        contact = Contact.objects.get(id=id)
+    except Contact.DoesNotExist:
+        pass
+
+    context = {
+        'contact':contact
+    }
+    return render(request, 'management/detail.html',context)
+
 
 def about(request):
     return HttpResponse("About us page ")
