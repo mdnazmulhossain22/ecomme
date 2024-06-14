@@ -34,7 +34,7 @@ def home(request):
 
     return render(request, 'management/home.html',context)
 
-def contact(request):
+def contacts(request):
     contacts = Contact.objects.all()
 
     context = {
@@ -44,11 +44,9 @@ def contact(request):
     return render(request, 'management/contacts.html',context)
  
 def detail(request, id):
-    contact = None
-    try:
-        contact = Contact.objects.get(id=id)
-    except Contact.DoesNotExist:
-        pass
+ 
+    contact = Contact.objects.filter(id=id).first()
+
 
     context = {
         'contact':contact
@@ -57,4 +55,4 @@ def detail(request, id):
 
 
 def about(request):
-    return HttpResponse("About us page ")
+    return render(request, 'management/about.html')

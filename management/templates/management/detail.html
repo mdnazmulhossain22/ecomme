@@ -8,6 +8,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    {% if contact %}
     <div class="container mt-5">
         <h2 class="mb-4">User Details</h2>
         <div class="card">
@@ -27,9 +28,12 @@
                 <h5 class="card-title">Address</h5>
                 <p class="card-text" id="address">{{contact.address}}</p>
             </div>
+            <a href="{% url 'contacts' %}">back</a>
         </div>
     </div>
-
+    {% else %}
+    <h3>Not found</h3>
+    {% endif %}
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
