@@ -35,7 +35,7 @@
     </tr>
     {% for contact in contacts %}
     <tr>
-        <td><a href="/contacts/detail/{{contact.id}}"> {{ contact.name }}</td></a>
+        <td><a href="{% url 'detail' contact.id %}"> {{ contact.name }}</td></a>
         <td>{{ contact.age }}</td>
         <td>{{ contact.phone }}</td>
         <td>{{ contact.address }}</td>
